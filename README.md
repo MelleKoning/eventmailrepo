@@ -51,3 +51,25 @@ What is the scope of the core library?
  Class EventMailCommands: use the Connection of EventStoreClient to expose commands for the library.
 
  Later: The emailaddress is change-able so can't be the unique identifiable key for the user, let's use the username for that then.
+
+ BREAK
+
+ Have eventstore running for proper interaction as per: 
+ https://eventstore.org/docs/getting-started/?tabs=tabid-1%2Ctabid-dotnet-client%2Ctabid-dotnet-client-connect%2Ctabid-4
+ Running gives a default admin-UI with default login at http://127.0.0.1:2113/web/index.html#/dashboard
+
+ - Refactor creation of client as per the introduction page
+ - To have a commandline interface to start interacting with the EventMail library from the Console application, use System.Commandline
+ dotnet add package System.CommandLine.Experimental --version 0.3.0-alpha.19577.1
+ dotnet add package System.CommandLine.DragonFruit --version 0.3.0-alpha.19577.1
+
+ Adding the following to the console properties window in visual studio ensures execution of the command:
+ register email test@test.com password pass
+
+When debugging all seems fine and this gives the following output on the console:
+ --
+EventMailConsole application
+user registered...
+--
+
+However, looking at the eventstore UserAdmin UI, no added stream about this event is seen, yet.. hmmmm

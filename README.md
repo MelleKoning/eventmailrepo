@@ -1,25 +1,25 @@
 # eventmailrepo
 Test for eventstore and mail registration 
 
-#goal
+# Goal
 
 The goal of this project:
 - Investigate eventsourcing in C# .Net Core 
 - Use the assignment text as provided in opdracht.txt
 - This readme used to write down progress, remarks and questions when these pop-up.
 
-#Initial Considerations
+# Initial Considerations
 When looking at 'opdracht.txt' several design decisions are already made:
 - One core library has the interface that is going to be used by the console app and the webapp.
 - This core library should be able to communicate with eventstore -> makes it an eventstore client generating events...
 - Therefore created three projects in the solution:
 
-##EventMailLib
+## EventMailLib
 Core library that should contain the eventstore client so that it is able to communicate
 events with the EventStore server
 Further implementation to be done.
 
-##EventMailConsole
+## 1. EventMailConsole
 The console application with a reference to EventMailLib so that it can use the EventMailLib exposed interface
 Note: Although 'opdracht.txt' says '.Net framework console app' probably just a console app is meant, otherwise
       we would have to deal with .Net Standard, .Net Framework and .Net Core compatibility issues, not considered part
@@ -27,15 +27,15 @@ Note: Although 'opdracht.txt' says '.Net framework console app' probably just a 
       appropriate versions becomes important as can be seen at:
       https://docs.microsoft.com/en-us/dotnet/standard/net-standard
 
-##WebAppEventMail
+## 2. WebAppEventMail
 The web application with a reference to EventMailLib so that it can use the EventMailLib exposed interface
 
-##EventMailLib
+## 3. EventMailLib
 Contains the interface to communicate with the eventstore 
 Added the eventstore client 5.0.5 as per shown .NET Cli command of:
 https://www.nuget.org/packages/EventStore.Client/
 
-Questions: 
+### Questions: 
 What is the scope of the core library? 
  1) Should this also contain the consumer of events?
  2) What is the goal of the SQL database; should the actual registrated emailaddresses be in the SQL database (instead of eventstorage)? Probably yes.
@@ -52,9 +52,9 @@ What is the scope of the core library?
 
  Later: The emailaddress is change-able so can't be the unique identifiable key for the user, let's use the username for that then.
 
- BREAK
+ # BREAK
 
- Have eventstore running for proper interaction as per: 
+New start, let's first have eventstore running for proper interaction as per: 
  https://eventstore.org/docs/getting-started/?tabs=tabid-1%2Ctabid-dotnet-client%2Ctabid-dotnet-client-connect%2Ctabid-4
  Running gives a default admin-UI with default login at http://127.0.0.1:2113/web/index.html#/dashboard
 

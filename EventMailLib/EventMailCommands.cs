@@ -87,7 +87,7 @@ namespace EventMailLib
                 _connection.AppendToStreamAsync(
                     _streamName, // It's probably ok to use same stream for different events
                     ExpectedVersion.Any, // see docs...
-                    registerEmailData); // the event created above
+                    registerEmailData).Wait(); // the event created above
             }
             catch (Exception ex)
             {

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EventMailConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "register email test@test.com password pass"
+    }
+  }
+}
